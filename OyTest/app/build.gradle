@@ -1,0 +1,76 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "com.oy.test"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        jackOptions{
+            enabled true
+        }
+    }
+
+    buildTypes {
+        debug{
+            resValue "string", "api_url", ""
+
+            minifyEnabled false
+            useProguard false
+        }
+
+        release {
+            resValue "string", "api_url", ""
+
+            minifyEnabled true
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions{
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions{
+        exclude 'META-INF/rxjava.properties'
+    }
+
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'x86', 'armeabi', 'armeabi-v7a', 'mips'
+            universalApk false
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    testCompile 'junit:junit:4.12'
+
+    compile "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+
+    compile "com.google.dagger:dagger:$rootProject.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+
+    compile "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
+    compile "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxBindingVersion"
+    compile "io.reactivex.rxjava2:rxjava:$rootProject.rxJavaVersion"
+}
