@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.oy.test.dagger.ApplicationComponent;
 import com.oy.test.dagger.ApplicationModule;
+import com.oy.test.dagger.DaggerApplicationComponent;
+import com.oy.test.dagger.NetworkModule;
 
 import io.realm.Realm;
 

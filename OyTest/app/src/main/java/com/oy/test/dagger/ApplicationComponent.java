@@ -12,7 +12,8 @@ import dagger.Component;
 
 @Singleton
 @Component(modules = {
-        ApplicationModule.class
+        ApplicationModule.class,
+        NetworkModule.class
 })
 public interface ApplicationComponent {
 
