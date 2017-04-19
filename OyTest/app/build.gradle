@@ -12,13 +12,13 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        jackOptions{
+        jackOptions {
             enabled true
         }
     }
 
     buildTypes {
-        debug{
+        debug {
             resValue "string", "api_url", ""
 
             minifyEnabled false
@@ -34,12 +34,12 @@ android {
         }
     }
 
-    compileOptions{
+    compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    packagingOptions{
+    packagingOptions {
         exclude 'META-INF/rxjava.properties'
     }
 
@@ -58,8 +58,8 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    testCompile 'junit:junit:4.12'
+
+    compile "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
 
     compile "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
@@ -67,10 +67,19 @@ dependencies {
     compile "com.google.dagger:dagger:$rootProject.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
 
+    compile "org.parceler:parceler-api:$rootProject.parcelerVersion"
+    annotationProcessor "org.parceler:parceler:$rootProject.parcelerVersion"
+
     compile "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
     compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
     compile "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxBindingVersion"
     compile "io.reactivex.rxjava2:rxjava:$rootProject.rxJavaVersion"
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.google.android.gms:play-services-maps:9.4.0'
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:recyclerview-v7:25.2.0'
 }
+
+//apply plugin: 'com.google.gms.google-services'
