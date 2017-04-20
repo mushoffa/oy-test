@@ -14,16 +14,16 @@ import java.util.List;
 public class MerchantList {
 
     @SerializedName("merchants")
-    List<Merchant> merchants;
+    private List<Merchant> merchants;
 
     @SerializedName("page")
-    int page;
+    private int page;
 
     @SerializedName("results_per_page")
-    int resultsPerPage;
+    private int resultsPerPage;
 
     @SerializedName("total_pages")
-    int totalPages;
+    private int totalPages;
 
     public List<Merchant> getMerchants() {
         return merchants;
