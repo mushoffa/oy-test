@@ -3,7 +3,7 @@ package com.oy.test.presenter;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.jakewharton.rxbinding2.widget.RxSearchView;
+import com.oy.test.activity.HomeView;
 import com.oy.test.model.MerchantList;
 import com.oy.test.network.MerchantService;
 
@@ -22,24 +22,25 @@ public class HomePresenter implements HomeContract.Presenter {
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @NonNull
-    private final HomeContract.View homeView;
+    private final HomeView homeView;
 
     @NonNull
     private final MerchantService merchantService;
 
-    public HomePresenter(@NonNull HomeContract.View homeView, @NonNull MerchantService merchantService){
+    public HomePresenter(@NonNull HomeView homeView, @NonNull MerchantService merchantService){
         this.homeView = homeView;
         this.merchantService = merchantService;
     }
 
     @Override
     public void subscribe() {
+        homeView.onInitialize();
         compositeDisposable.add(searchMerchantByKeyword());
     }
 
     @Override
     public void unsubscribe() {
-        compositeDisposable.clear();
+        compositeDisposable.dispose();
     }
 
     public Disposable searchMerchantByKeyword(){
@@ -61,10 +62,6 @@ public class HomePresenter implements HomeContract.Presenter {
                         Log.d("HOME PRESENTER", "Throwable");
                     }
                 });
-
-    }
-
-    public void getData(){
 
     }
 }
