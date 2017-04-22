@@ -19,7 +19,7 @@ android {
 
     buildTypes {
         debug {
-            resValue "string", "api_url", ""
+            resValue "string", "api_url", "\"http://54.169.49.140:8765/\""
 
             minifyEnabled false
             useProguard false
@@ -60,9 +60,13 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:design:25.2.0'
-    compile 'com.android.support:recyclerview-v7:25.2.0'
+
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:design:$rootProject.supportLibraryVersion"
+    compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:support-v4:$rootProject.supportLibraryVersion"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
     compile "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
 
     compile "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
@@ -76,7 +80,7 @@ dependencies {
 
     compile "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     //    compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.retrofitVersion"
-//    compile "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
 
     compile "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
     //    compile "io.reactivex.rxjava:rxandroid:$rootProject.rxAndroidVersion"
@@ -87,11 +91,11 @@ dependencies {
     compile "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxBinding2Version"
     compile "io.reactivex.rxjava2:rxjava:$rootProject.rxJava2Version"
 
-    compile 'com.google.android.gms:play-services-maps:9.4.0'
+    compile "com.google.android.gms:play-services-maps:$rootProject.playServiceVersion"
+    compile "com.google.android.gms:play-services-location:$rootProject.playServiceVersion"
+//    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
 
     testCompile 'junit:junit:4.12'
-
-    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
 }
 
 //apply plugin: 'com.google.gms.google-services'

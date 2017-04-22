@@ -1,8 +1,8 @@
 package com.oy.test.scheduler;
 
 import android.support.annotation.NonNull;
+import io.reactivex.Scheduler;
 
-import rx.Scheduler;
 
 /**
  * Created by mushoffa on 18/04/17.
