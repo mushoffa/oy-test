@@ -27,7 +27,7 @@ public class HomePresenter implements HomeContract.Presenter {
     @NonNull
     private final MerchantService merchantService;
 
-    public HomePresenter(@NonNull HomeView homeView, @NonNull MerchantService merchantService){
+    public HomePresenter(@NonNull HomeView homeView, @NonNull MerchantService merchantService) {
         this.homeView = homeView;
         this.merchantService = merchantService;
     }
@@ -43,7 +43,7 @@ public class HomePresenter implements HomeContract.Presenter {
         compositeDisposable.dispose();
     }
 
-    public Disposable searchMerchantByKeyword(){
+    public Disposable searchMerchantByKeyword() {
         return homeView.getSearchView()
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(Schedulers.io())
@@ -52,16 +52,25 @@ public class HomePresenter implements HomeContract.Presenter {
                 .subscribe(new Consumer<MerchantList>() {
                     @Override
                     public void accept(@io.reactivex.annotations.NonNull MerchantList merchantLists) throws Exception {
-                        Log.d("HOME PRESENTER", "Pages: " + merchantLists.getTotalPages());
+
                         homeView.onSuccessGetMerchantList(merchantLists);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(@io.reactivex.annotations.NonNull Throwable throwable) throws Exception {
                         throwable.printStackTrace();
-                        Log.d("HOME PRESENTER", "Throwable");
                     }
                 });
 
+    }
+
+    public void searchMerchantByKeywordAndPage(String keyword, int page) {
+        compositeDisposable.add(
+                merchantService.getMerchantByKeywordAndPage(keyword, page)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(homeView::onSuccessGetMerchantList, homeView::onFailedGetMerchantList)
+
+        );
     }
 }
