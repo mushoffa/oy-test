@@ -14,14 +14,14 @@ import java.util.Map;
 public class OperationalHour {
 
     @SerializedName("day_of_week")
-    private String dayOfWeek;
+    String dayOfWeek;
 
     @SerializedName("timings")
-    private Map<String, String> timings;
+    Map<String, String> timings;
 
-    private String closeTime;
+    String closeTime;
 
-    private String openTime;
+    String openTime;
 
     public String getDayOfWeek() {
         return dayOfWeek;

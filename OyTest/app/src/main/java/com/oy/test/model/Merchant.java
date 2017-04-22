@@ -1,5 +1,7 @@
 package com.oy.test.model;
 
+import android.util.Log;
+
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.annotations.SerializedName;
 
@@ -15,34 +17,34 @@ import java.util.List;
 public class Merchant {
 
     @SerializedName("address")
-    private String address;
+    String address;
 
     @SerializedName("brand")
-    private String brand;
+    String brand;
 
     @SerializedName("brand_id")
-    private String brandId;
+    String brandId;
 
     @SerializedName("description")
-    private String description;
+    String description;
 
     @SerializedName("facilities")
-    private List<String> facilities;
+    List<String> facilities;
 
     @SerializedName("maps")
-    private String geoLocation;
+    String geoLocation;
 
     @SerializedName("merchant_id")
-    private String merchantId;
+    String merchantId;
 
     @SerializedName("merchant_name")
-    private String merchantName;
+    String merchantName;
 
     @SerializedName("phone")
-    private String phone;
+    String phone;
 
     @SerializedName("username")
-    private String username;
+    String username;
 
     public String getAddress() {
         return address;
