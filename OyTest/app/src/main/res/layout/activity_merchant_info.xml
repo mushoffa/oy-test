@@ -123,6 +123,7 @@
                 android:id="@+id/btn_merchant_info_phone"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
+                android:textSize="10sp"
                 android:layout_marginRight="8dp"
                 android:text="@string/call"
                 app:layout_constraintBaseline_toBaselineOf="@+id/text_merchant_info_phone"
