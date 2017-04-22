@@ -1,0 +1,8 @@
+package com.oy.test.common.base;
+
+/**
+ * Created by mushoffa on 22/04/17.
+ */
+
+public interface IBaseView {
+}
