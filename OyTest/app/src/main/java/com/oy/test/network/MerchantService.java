@@ -20,9 +20,9 @@ public interface MerchantService {
     Observable<MerchantList> getMerchantByKeyword(@Query("keywords") String keyword);
 
     @GET("api/v1/merchants")
-    Observable<List<MerchantList>> getMerchantByKeywordAndPage(@Query("keyword") String keyword,
+    Observable<MerchantList> getMerchantByKeywordAndPage(@Query("keywords") String keyword,
                                                                @Query("page") int page);
 
-    @GET("api/v1/merchant/")
+    @GET("api/v1/merchant/n?")
     Observable<Merchant> getMerchantProfile(@Query("merchant_id") String merchantId);
 }
