@@ -118,7 +118,7 @@ public class HomeActivity extends BaseActivity implements HomeView, MerchantList
 
                 if(lastVisibleItemPosition == merchantListAdapter.getItemCount() -1){
 
-                    if(merchantList.getPage() < merchantList.getTotalPages()){
+                    if((merchantList.getPage() < merchantList.getTotalPages()) && !currentQuery.isEmpty()){
                         int nextPage = merchantList.getPage() + 1;
                         presenter.searchMerchantByKeywordAndPage(currentQuery, nextPage);
                     }
@@ -178,6 +178,7 @@ public class HomeActivity extends BaseActivity implements HomeView, MerchantList
                 .filter(query -> {
                     if(query.length() < 4){
                         merchants.clear();
+                        currentQuery = "";
                         merchantListAdapter.notifyDataSetChanged();
                         return false;
                     }
