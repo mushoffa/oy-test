@@ -2,6 +2,7 @@ package com.oy.test.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -105,6 +106,7 @@ public class HomeActivity extends BaseActivity implements HomeView, MerchantList
         merchantListAdapter = new MerchantListAdapter(this, merchants, null, this);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(merchantListAdapter);
