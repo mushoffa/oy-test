@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by mushoffa on 18/04/17.
  */
 
-public class HomePresenter implements HomeContract.Presenter {
+public class HomePresenter implements BasePresenter {
 
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 

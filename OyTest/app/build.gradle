@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'realm-android'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -19,7 +18,7 @@ android {
 
     buildTypes {
         debug {
-            resValue "string", "api_url", "\"http://54.169.49.140:8765/\""
+            resValue "string", "api_url", ""
 
             minifyEnabled false
             useProguard false
@@ -48,15 +47,6 @@ android {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
         exclude 'META-INF/rxjava.properties'
     }
-
-    splits {
-        abi {
-            enable true
-            reset()
-            include 'x86', 'armeabi', 'armeabi-v7a', 'mips'
-            universalApk false
-        }
-    }
 }
 
 dependencies {
@@ -83,13 +73,9 @@ dependencies {
     annotationProcessor "org.parceler:parceler:$rootProject.parcelerVersion"
 
     compile "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
-    //    compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.retrofitVersion"
     compile "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
 
     compile "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
-    //    compile "io.reactivex.rxjava:rxandroid:$rootProject.rxAndroidVersion"
-    //    compile "com.jakewharton.rxbinding:rxbinding:$rootProject.rxBindingVersion"
-    //    compile "io.reactivex.rxjava:rxjava:$rootProject.rxJavaVersion"
 
     compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroid2Version"
     compile "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxBinding2Version"
@@ -97,9 +83,6 @@ dependencies {
 
     compile "com.google.android.gms:play-services-maps:$rootProject.playServiceVersion"
     compile "com.google.android.gms:play-services-location:$rootProject.playServiceVersion"
-//    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
 
     testCompile 'junit:junit:4.12'
 }
-
-//apply plugin: 'com.google.gms.google-services'
