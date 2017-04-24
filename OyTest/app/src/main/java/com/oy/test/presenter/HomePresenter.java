@@ -1,16 +1,13 @@
 package com.oy.test.presenter;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.oy.test.activity.HomeView;
-import com.oy.test.model.MerchantList;
 import com.oy.test.network.MerchantService;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -49,18 +46,7 @@ public class HomePresenter implements BasePresenter {
                 .observeOn(Schedulers.io())
                 .switchMap(merchantService::getMerchantByKeyword)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<MerchantList>() {
-                    @Override
-                    public void accept(@io.reactivex.annotations.NonNull MerchantList merchantLists) throws Exception {
-
-                        homeView.onSuccessGetMerchantList(merchantLists);
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(@io.reactivex.annotations.NonNull Throwable throwable) throws Exception {
-                        throwable.printStackTrace();
-                    }
-                });
+                .subscribe(homeView::onSuccessGetMerchantList, homeView::onFailedGetMerchantList);
 
     }
 
