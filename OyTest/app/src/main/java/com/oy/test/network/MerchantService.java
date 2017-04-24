@@ -3,9 +3,6 @@ package com.oy.test.network;
 import com.oy.test.model.Merchant;
 import com.oy.test.model.MerchantList;
 
-import java.util.List;
-
-import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
